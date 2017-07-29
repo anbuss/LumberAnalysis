@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <body >
+
+        <ui:composition template="/template/LumberTemplate.xhtml">
+            <ui:define name="content">
+
+                <link href="../resources/css/AddIssueInformation.css" rel="stylesheet" type="text/css" id="localSheet" />
+
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+
+                <script src="../scripts/jquery-ui-addon/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+                <link href="../scripts/jquery-ui-addon/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+
+
+                <script> 
+                    
+                    $(document).ready(function () {
+                        $( "#foundDate" ).datepicker();
+                        $( "#fixDate" ).datepicker();
+                         
+                    });
+                </script>
+                <h:form id="psData" prependId="false">
+
+                    <h:panelGrid columns="4" style="width:100%; overflow:auto;" columnClasses="col1,col2,col3,col4" >
+                        <f:facet class="panelGridHeader" name="header" > 
+                            <div class="panelGridHeader" style="border-width:3px;border-bottom:solid;border-top: solid;border-color: #00A400">
+
+                                <h:panelGrid   columns="2" columnClasses="panelGridHeader,panelGridHeaderRight" style="width:700px;overflow:auto;">
+                                    <h:outputText class="panelGridHeader" value=" Add new Problem and Solution."/>
+                                    <h:panelGroup>
+                                        <h:commandButton   type="reset" value="Reset" class="button_16x16" style="float: right;"
+                                                         title="Reset."   image="../images/refresh_48.png" ></h:commandButton>
+                                    </h:panelGroup>
+                                </h:panelGrid>
+                            </div>
+                        </f:facet>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4" style="width:75%; overflow:auto;" columnClasses="col1,col2,col3,col4" >
+
+                        <h:outputText class="outputText" style="width:10%;" value="Application Code :"></h:outputText>
+                        <h:inputText id="Appname" value="#{psBeanAdd.psData.providerName}" class="textbox" style="width:50%;"
+                                     required="true" requiredMessage="Select Application name!"></h:inputText>
+
+
+                        <h:outputText class="outputText" value="Unique Issue ID :"></h:outputText>
+                        <h:inputText id="providerIssueId" value="#{psBeanAdd.psData.providerIssueId}" class="textbox" style="width:50%;"
+                                     required="true" requiredMessage="Please Enter Unique Issue ID!"></h:inputText>
+
+
+                        <h:outputText class="outputText" value="App Sub name:"></h:outputText>
+                        <h:inputText id="providerSubName"
+                                     value="#{psBeanAdd.psData.providerSubName}" required="true" class="textbox" style="width:50%;"
+                                     requiredMessage="Please provide App Sub name!"></h:inputText>
+
+
+                        <h:outputText class="outputText" value="Category:"></h:outputText>
+                        <h:inputText id="providerCategory"
+                                     value="#{psBeanAdd.psData.providerCategory}" required="true" class="textbox" style="width:50%;"
+                                     requiredMessage="Please Confirm Category:!"></h:inputText>
+
+
+                        <h:outputText class="outputText" value="Version :"></h:outputText>
+                        <h:inputText id="firstname" value="#{psBeanAdd.psData.providerVersion}" class="textbox" style="width:50%;"
+                                     required="true" requiredMessage="Please Enter Version!"></h:inputText>
+
+
+                        <h:outputText class="outputText" value="Message Type :"></h:outputText>
+                        <h:inputText id="messageType" value="#{psBeanAdd.psData.messageType}" class="textbox" style="width:50%;"
+                                     required="true" requiredMessage="Please Enter Message Type!"></h:inputText>
+
+                    </h:panelGrid>
+
+                    <h:panelGrid  columns="2"  style="width:75%;" columnClasses="colExt1,colExt2" >
+
+                        <h:outputText class="outputText" value="Short Desciption :"></h:outputText>
+                        <h:inputText id="shortDescription" value="#{psBeanAdd.psData.shortDescription}" required="true" class="textbox" style="width:81%;"
+                                     requiredMessage="Please Enter Short Desciption!"></h:inputText>
+
+
+
+                        <h:outputText class="outputText" value="Desciption :"></h:outputText>
+                        <h:inputTextarea id="description" value="#{psBeanAdd.psData.description}"  class="textbox" style="width:81%;"
+                                         ></h:inputTextarea>
+
+
+                        <h:outputText class="outputText" value="Cause :"></h:outputText>
+                        <h:inputTextarea id="cause" value="#{psBeanAdd.psData.cause}" required="true" class="textbox" style="width:81%;"
+                                         requiredMessage="Please Enter Cause!"></h:inputTextarea>
+
+
+                        <h:outputText class="outputText" value="Fix :"></h:outputText>
+                        <h:inputTextarea id="fix" value="#{psBeanAdd.psData.fix}"  class="textbox" style="width:81%;"
+                                         requiredMessage="Please Enter Fix!"></h:inputTextarea>
+
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3"  style="width:75%; overflow:auto;" columnClasses="colContact1,colContact2,colContact3" >
+                        <h:panelGroup >
+                            <h:panelGrid columns="2" style="width:100%; overflow:auto;">
+                                <h:outputText class="outputText" value="Contact Person :"></h:outputText>
+                                <h:inputText id="contactName" value="#{psBeanAdd.psData.contactName}" class="textbox" style="width:100%;"
+                                             ></h:inputText>
+
+
+                                <h:outputText class="outputText" value="Contact number:"></h:outputText>
+                                <h:inputText id="contactNumber" value="#{psBeanAdd.psData.contactNumber}" class="textbox" style="width:100%;"
+                                             required="false" requiredMessage="Please Enter State/Province!"></h:inputText>
+
+
+
+                                <h:outputText class="outputText" value="email id :"></h:outputText>
+                                <h:inputText id="contactEmail" value="#{psBeanAdd.psData.contactEmail}"  class="textbox" style="width:100%;"
+                                             requiredMessage="Please Enter Email!"></h:inputText>
+
+
+                                <h:outputText class="outputText" value="Found Date :"></h:outputText>
+                                <h:inputText id="foundDate" value="#{psBeanAdd.psData.problemDate}"  class="textbox" 
+                                             style="width:100%;" >
+                                    <f:convertDateTime pattern="MM/dd/yyyy"  />
+                                </h:inputText>
+
+
+                                <h:outputText class="outputText" value="Fix Date:"></h:outputText>
+                                <h:inputText id="fixDate" value="#{psBeanAdd.psData.problemFixDate}"  class="textbox" 
+                                             style="width:100%;">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"  />
+                                </h:inputText>
+
+
+                                <h:outputText class="outputText" value="Tag's :"></h:outputText>
+                                <h:inputText id="tags" value="#{psBeanAdd.psData.tags}" class="textbox" style="width:100%;"
+                                             requiredMessage="Please Enter State/Province!"></h:inputText>
+
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:outputText class="outputText" value="Notes :"></h:outputText>
+                            <h:inputTextarea id="contactNotes" value="#{psBeanAdd.psData.contactNotes}"  class="textbox" rows="10" style="width:59%;"
+                                             ></h:inputTextarea>
+                            <h:commandButton class="button_rounded" type="submit" value="Submit" action="#{psBeanAdd.save}"></h:commandButton>
+                            
+                        </h:panelGroup>
+
+                    </h:panelGrid>
+                    
+                    <h:commandButton class="button_normal_roundcorner" type="reset" value="Reset"></h:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

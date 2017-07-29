@@ -1,0 +1,17 @@
+/* 
+    Document   : login
+    Created on : Jun 4, 2013, 12:31:38 PM
+    Author     : samidoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.login_col1{
+    width: 80%
+}
+.login_col2{
+    width: 10%
+}

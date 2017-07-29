@@ -1,0 +1,215 @@
+/* 
+    Document   : default-
+    Created on : May 21, 2012, 4:43:48 PM
+    Author     : samidoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    background-color: #FFFFFF;
+    font-size:12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+
+h1 {
+   /* font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif; */
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+/*a:link, a:visited {
+  color: #045491;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #045491;
+  font-weight : bold;
+  text-decoration : underline;
+}*/
+
+root { 
+    display: block;
+}
+.outputText {
+    /*  background-color: #ffffff; */
+    font-size: 12px;
+    /*font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;*/
+    color: #000000;  
+    margin: 17px;
+    font-weight: bold
+}
+.textbox{ 
+   /* font-family:Verdana, Arial, Helvetica, sans-serif;*/
+    font-size:11px;
+}
+
+.selectManyListbox{ 
+    /*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+    font-size:11px;
+    height: 25px;
+    width: 165px;
+}
+.selectManyListboxwithoutSize{ 
+    /*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+    font-size:11px;
+    
+}
+
+.button_normal {    
+    font-size: 10px;
+    color: #000000;  
+    margin: 10px;
+    font-weight: bold;
+    height: 25px;
+    width: 75px;
+    margin: 0 auto;
+    background: steelblue;
+    color: #FFFFFF;
+}
+
+.button_normal_roundcorner{
+ background-color: #00A400;
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ -moz-box-shadow: 3px 3px 1px #999;
+ -webkit-box-shadow: 3px 3px 1px #999;
+ border: solid 1px #CCC;
+ font-size:10px;
+ color: #ffffff;
+ text-shadow: 2px 2px 4px #000000;
+ }
+
+ .button_normal_roundcorner:hover {
+ background-color: #00CC00;
+ }
+ 
+ .button_reset_roundcorner{
+ background-color: #00A400;
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ -moz-box-shadow: 3px 3px 1px #999;
+ -webkit-box-shadow: 3px 3px 1px #999;
+ border: solid 1px #CCC;
+ font-size:10px;
+ color: #ffffff;
+ text-shadow: 2px 2px 4px #000000;
+ icon: url('../images/refresh_48.png');
+ }
+
+ .button_reset_roundcorner:hover {
+ background-color: #00CC00;
+ }
+ 
+ .button_rounded {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding:0 3px 0 3px;
+    display:inline-block;
+    text-decoration:none;
+    background:steelblue;
+    text-shadow: 2px 2px 4px #000000;
+    color:#FFFFFF;
+    cursor:pointer;
+    font-size: 10px;
+    font-weight: bold;
+    height: 25px;
+    width: 75px;
+    
+}
+
+.button_rounded:hover { 
+    text-decoration:none; 
+    color:#00CC00; 
+    cursor:pointer;
+    border:1px solid #ff611C;
+     display: -moz-inline-block;
+}
+
+.button_16x16 {    
+    font-size: 10px;
+    color: #000000;  
+    margin: 17px;
+    font-weight: bold;
+    height: 16px;
+    width: 16px;
+    margin: 0 auto;
+   
+}
+.panelGrid{
+    font-size: 15px;
+    color: #000000;  
+    margin: 17px;
+    font-weight: bold;
+    text-align:left;
+    /*border:1px solid green; */
+}
+.panelGridHeader{
+    font-size: 15px;
+    color: #000000;  
+    margin: 17px;
+    font-weight: bold;
+    background-color:#98bf21; 
+    text-align:left;
+    margin: 0 auto;
+}
+
+.panelGridHeaderRight{
+    font-size: 10px;
+    color: #000000;  
+    margin: 17px;
+    text-align: right;
+    
+    background-color:#98bf21; 
+    text-align:right;
+    margin: 0 auto;
+}
+
+.panelGridRight{
+    font-size: 10px;
+    color: #000000;  
+    margin: 17px;
+    text-align: right;
+    text-align:right;
+    margin: 0 auto;
+}
+.panelGridHeaderRight1{
+    
+align:right;
+
+}
+
+/* Message type stuff */
+
+.infoMessage{
+    background-color: #3169C6;
+    font-size: 12px;
+    margin: 5px;
+}
+.errorMessage{
+    background-color: #710000;
+    color: white;
+    font-size: 11px;
+    margin: 3px;
+}
+.borderBox{
+    border-style:dotted;
+    border-width:1px;
+    border-color: #000000
+}
+.borderHeader{
+    border-width:3px;
+    border-bottom:solid;
+    border-top: solid;
+    border-color: #00A400
+}

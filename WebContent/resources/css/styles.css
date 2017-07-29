@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.error { font-weight: bold;
+         color: red;
+         background-color: yellow;
+}
+a:hover { color: red }
+/*th.title   { font-size: 24px;
+             font-family: Arial, Helvetica, sans-serif;
+} */
+/*th { font-size: 18px;
+     font-family: Arial, Helvetica, sans-serif;
+}
+td { font-size: 18px;
+     font-family: Arial, Helvetica, sans-serif;
+} */
+legend {
+  font-weight: bold;
+  background-color: #eeeeee;
+  border: 1px solid #999999;
+  padding: 3px 2px;
+}
+li { font-weight: bold;
+     font-size: 12px;
+    /* font-family: Arial, Helvetica, sans-serif;*/
+}
+h2 { color: #440000;
+     font-weight: bold;
+     font-size: 18px;
+    /* font-family: Arial, Helvetica, sans-serif;*/
+}
+
+
+.outer-div
+{
+	width:1200px;
+	margin:0 5/*auto*/;
+}
+.menu-div
+{
+	width:1030px;
+	float:left;
+       /* margin:0em 0em 0em 1em;*/
+}
+.whole-div
+{
+	width:1200px;
+	float:left;
+}
+.header-left
+{
+	width:200px;
+	float:left;
+	border-top:18px solid #00611C;
+}
+.logo
+{
+	width:389px;
+	float:left;
+	padding:2px 0 5px 28px;
+}
+.curve
+{
+	width:27px;
+	float:left;
+        /*border-bottom: 5px solid #ff611C;*/
+}
+.middle-div
+{
+	width:771px;
+        height:43px;
+	float:left;
+        border-bottom: 2px solid #ff611C;
+	border-top:12px solid #00611C;
+	padding-left:32px;
+	padding-bottom:5px;
+	background:#00611C;
+}
+.curve-rght
+{
+	width:50px;
+	float:left;
+        
+}
+.search
+{
+	width:210px;
+	float:left;
+        padding-top: 10px;
+	padding-right:40px;
+}
+.top-menu
+{
+	width:180px;
+	float:left;         
+	padding-left:255px;
+        padding-top: 10px;
+	color:#fff;
+	font-size:13px;
+}
+.top-menu a:hover{
+    color: #ff611C; /*background of tabs for hover state */
+}
+a.blue:link{text-decoration:none; color:#fff; font-size:13px;}
+a.blue:visited{text-decoration:none; color:#fff;}
+a.blue:active{text-decoration:none; color:#fff;}
+a.blue:hover{text-decoration:none; color:#1fae7d;}
+
+.lblDiv{
+    width: 25%;
+
+}
+.lblContent{
+    width: 75%;
+}
+.headerBroder{
+    border-width:3px;
+    border-bottom:solid;
+    border-top: solid;
+    border-color: #00A400
+}

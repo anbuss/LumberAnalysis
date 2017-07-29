@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="../css/default-.css" rel="stylesheet" type="text/css" />
+        <!--<link href="./css/ddlevelsmenu-base.css" type="text/css"/>
+        <link href="./css/ddlevelsmenu-sidebar.css" type="text/css"/>
+        <link href="./css/ddlevelsmenu-topbar.css" type="text/css"/>-->
+        <script type="text/javascript" src="../scripts/prototype.js"></script>
+        <script type="text/javascript" src="../scripts/scriptaculous.js"></script>
+        <script type="text/javascript" src="../scripts/global.js"></script>
+        <script type="text/javascript" src="../scripts/ddlevelsmenu.js"></script>
+        
+        <!-- link rel="stylesheet" href="../themes/ui-lightness/jquery-ui-1.8.20.custom.css" / -->
+	   
+        <h:outputScript library="javax.faces" name="jsf.js"/>
+        <script type="text/javascript">
+            ddlevelsmenu.setup("ddtopmenubar", "topbar");
+        </script>
+
+        <title>Lumber Analysis</title>
+    </h:head>
+    
+      <h:body>
+
+<p:layout fullPage="true">  
+  
+    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
+        <div class="whole-div">
+                    <div class="header-left">
+                        <div class="logo">
+                            <img src="../images/logo.jpg" height="36" width="166" border="0" />
+                        </div>
+                    </div>
+                    <div class="curve">
+                        <img src="../images/curve.jpg" height="38" width="27" border="0" />
+                    </div>
+                    <div class="middle-div">
+                        <div class="search">
+
+
+                            <input type="text" style="border:0px; width:190px; padding-left:18px; height:19px; background:url(images/search.jpg) no-repeat;" value="Search" onfocus="if(this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value=this.defaultValue;"/>
+
+                        </div>
+                        <div class="top-menu">
+                            <a href="index.jsf" class="blue">Home      </a> &nbsp;| &nbsp;<a href="#" class="blue">Contact  </a> &nbsp;| &nbsp;<a href="#" class="blue">Support  </a>
+                        </div>
+                    </div>
+                    <div class="curve-rght">
+                        <img src="../images/curve-right.jpg" height="38" width="50" border="0" />
+                    </div>
+                </div>
+                <div class="whole-div">
+                    <div class="mattblackmenu" id="ddtopmenubar">
+                        <ul>
+                            <!-- li><a href="index.jsf">Home</a></li>
+                            <li><a href="logviewer/logviewer.xhtml" class="">Search</a></li>
+                            <li><a href="Logout.jsp" class="">Logout</a></li -->
+                            
+                            <ui:repeat value="#{menuBean.firstLineMenu}" var="menu1">
+                                <h:panelGroup rendered="#{!menu1.havingChild}">                                
+                                    <li><a href="#{menu1.url}">#{menu1.caption}</a></li>
+                                </h:panelGroup>  
+                                <h:panelGroup rendered="#{menu1.havingChild}"> 
+                                    <li><a rel="#{menu1.name}" href="#{menu1.url}">#{menu1.caption}</a></li>
+                                </h:panelGroup>
+                            </ui:repeat>
+                        </ul>
+                    </div>
+
+
+                    <!--Top Drop Down Menu 2 HTML-->
+
+                    <ui:repeat value="#{menuBean.firstLineMenu}" var="menu2">
+                       <h:panelGroup rendered="#{menu2.havingChild == true}">
+                            <ul id="#{menu2.name}" class="ddsubmenustyle">
+                            <ui:repeat value="#{menu2.child}" var="menu2c"> 
+                                <h:panelGroup rendered="#{menu2c.havingChild == false}">
+                                    <li><a href="#{menu2c.url}">#{menu2c.caption}</a></li>
+                               </h:panelGroup>
+                                <h:panelGroup rendered="#{menu2c.havingChild == true}">
+                                    <li><a rel="#{menu2c.name}" href="#{menu2c.url}">#{menu2c.caption}</a></li>
+                                </h:panelGroup>
+                            </ui:repeat>
+                            
+                            </ul>
+                       </h:panelGroup>
+                    </ui:repeat>                    
+                    
+                </div> 
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
+        <h:outputText value="South unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
+        <h:form id="west">  
+                            <p:growl id="messages" showDetail="true" />  
+                            <div style="overflow-y:auto;overflow-x:auto;height:300px;width:110px;font-size: 14px">
+
+                                <p:tree  value="#{logViewerBean.root}" var="node" id="checkboxTree"  
+                                         selectionMode="checkbox"  
+                                         selection="#{logViewerBean.selectedNodes}">  
+
+                                    <p:treeNode>  
+                                        <h:outputText value="#{node}" />  
+                                    </p:treeNode>  
+                                </p:tree>  
+                            </div>
+                            <p:commandButton value="Display Selected" update="messages"  
+                                             actionListener="#{logViewerBean.displaySelectedMultiple}" id="btnDisplay"/>  
+
+                        </h:form>  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  
+        <div id="right">
+                    <ui:insert name="right">Right</ui:insert>
+                </div>
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="center">  
+         <h:form id="center">  
+                            <h:panelGrid columns="2">
+
+                                <h:outputText class="outputText" value="Type :"></h:outputText>
+                                <h:selectManyListbox id="type" value="#{logViewerBean.categorytype}" class="selectManyListbox">
+                                    <f:selectItems value="#{logViewerBean.favFood2Value}" />
+                                </h:selectManyListbox>
+
+                                <h:outputText class="outputText" value="Class Name :"></h:outputText>
+                                <h:inputText id="className" value="#{logViewerBean.className}" class="textbox"></h:inputText>
+
+                                <h:outputText class="outputText" value="Thread Name :"></h:outputText>
+                                <h:inputText id="threadName" value="#{logViewerBean.threadName}" class="textbox"></h:inputText>
+
+                                <h:outputText class="outputText" value="Nested Diagnostic Context :"></h:outputText>
+                                <h:inputText id="nestedDiagnosticContext" value="#{logViewerBean.nestedDiagnosticContext}" class="textbox"></h:inputText>
+
+                                <h:outputText class="outputText" value="Start :"></h:outputText>
+
+                                <h:inputText id="datepicker"  value="#{logViewerBean.freeText}" ></h:inputText>
+
+                                <h:commandButton type="submit" value="Search"
+                                                 action="#{logViewerBean.search}"></h:commandButton>
+                                <h:commandButton type="reset" value="Reset"></h:commandButton>
+                            </h:panelGrid>
+                        </h:form>
+    </p:layoutUnit>  
+  
+</p:layout>  
+          
+        <div class="outer-div">
+            <!--<div id="top">-->
+            <ui:insert name="top">
+
+
+                
+
+            </ui:insert>
+
+            <div class="whole-div">
+
+                
+                
+                
+
+                <!-- div id="bottom">
+                    <ui:insert name="bottom">Bottom</ui:insert>
+                </div -->
+            </div>
+
+        </div>
+    </h:body>
+
+    
+</html>

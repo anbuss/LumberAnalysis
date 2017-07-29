@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+            /WEB-INF/applicationContext-security.xml
+            /WEB-INF/applicationContext-Data.xml
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+    
+    
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <!-- <context-param>
+            <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+            <param-value>client</param-value>
+        </context-param>
+        <context-param>
+            <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+            <param-value>true</param-value>
+        </context-param> -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogViewerServlet</servlet-name>
+        <servlet-class>com.logviewer.log.servlet.LogViewerServlet</servlet-class>
+        <init-param>
+            <param-name>LogViewer</param-name>
+            <!-- param-value>LogViewer.properties</param-value -->
+            <!-- param-value>D:\\Dropbox\\Windows\\Dropbox\\Logproject\\tomcat\\LogViewer.properties</param-value -->
+            <param-value>LogViewer.properties</param-value>
+            
+        </init-param>
+        <init-param>
+            <param-name>ReportPath</param-name>
+            <!-- <param-value>/LogViewer/html/</param-value> -->
+            <param-value>D:\\temp\\</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogViewerServlet</servlet-name>
+        <url-pattern>/LogViewerServlet</url-pattern>
+    </servlet-mapping>
+    <!-- Lets the bean definition file specify scopes of request
+       and session. -->
+    
+    <!-- <listener>
+        <listener-class>com.lumberanalysis.webapp.listener.StartupListener</listener-class>
+    </listener> -->
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>springSecurityFilterChain</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <!-- Filter Mappings -->
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- context-param>
+        <param-name>facelets.LIBRARIES</param-name>
+        <param-value>/WEB-INF/facelets/mytags.taglib.xml</param-value>
+    </context-param -->
+    <context-param> 
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name> 
+        <param-value>.xhtml</param-value> 
+    </context-param> 
+    
+    <!-- JSF Unit conf (Start)-->
+    	
+
+   <filter>
+     <filter-name>JSFUnitFilter</filter-name>
+     <filter-class>org.jboss.jsfunit.framework.JSFUnitFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+     <filter-name>JSFUnitFilter</filter-name>
+     <servlet-name>ServletTestRunner</servlet-name>
+   </filter-mapping>    
+   
+   <filter-mapping>
+     <filter-name>JSFUnitFilter</filter-name>
+     <servlet-name>ServletRedirector</servlet-name>
+   </filter-mapping>
+
+   <servlet>
+     <servlet-name>ServletRedirector</servlet-name>
+     <servlet-class>org.jboss.jsfunit.framework.JSFUnitServletRedirector</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <servlet-name>ServletTestRunner</servlet-name>
+      <servlet-class>org.apache.cactus.server.runner.ServletTestRunner</servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+     <servlet-name>ServletRedirector</servlet-name>
+     <url-pattern>/ServletRedirector</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>ServletTestRunner</servlet-name>
+      <url-pattern>/ServletTestRunner</url-pattern>
+   </servlet-mapping>
+
+    <!-- JSF Unit conf (End) -->
+    
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>

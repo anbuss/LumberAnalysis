@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    <global-method-security
+        secured-annotations="enabled">
+    </global-method-security>
+
+    <http auto-config="true" access-denied-page="/faliure.xhtml">
+       <!-- <intercept-url
+            pattern="/**"
+            access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER" />
+        <intercept-url pattern="/a4j.res/*.xhtml*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url
+            pattern="/**"
+            access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
+         
+        <intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER" />
+        <intercept-url pattern="/a4j.res/*.xhtml*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY,ROLE_ADMIN,ROLE_USER" /> 
+       <intercept-url pattern="/logviewer/**" access="ROLE_ADMIN,ROLE_USER" /> 
+       <intercept-url pattern="/issueInfo/**" access="ROLE_ADMIN" /> 
+        <intercept-url pattern="/index.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/Login.*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+        <form-login
+            login-processing-url="/j_security_check"
+            login-page="/Login.xhtml"
+            default-target-url="/home/success.xhtml"
+            authentication-failure-url="/Login.xhtml?error=true" />
+        <logout logout-url="/Logout*" logout-success-url="/index.xhtml" />
+        <remember-me user-service-ref="userDao" key="e37f4b31-0c45-11dd-bd0b-0800200c9a66"/>
+
+    </http>
+   <!-- <bean id="securityFilter" class="org.springframework.security.util.FilterChainProxy">
+        <security:filter-chain-map path-type="ant">
+            <security:filter-chain pattern="/services/**"
+                               filters="httpSessionContextIntegrationFilterWithASCFalse,
+                   _basicAuthenticationFilter,basicExceptionTranslationFilter,
+                   _filterSecurityInterceptor"/>
+            <security:filter-chain pattern="/**"              
+                               filters="_httpSessionContextIntegrationFilter,_formLoginFilter,
+                     _securityContextHolderAwareRequestFilter,_rememberMeFilter,
+                     _anonymousProcessingFilter,_exceptionTranslationFilter,
+                     _filterSecurityInterceptor"/>
+        </security:filter-chain-map>
+    </bean> -->
+    <authentication-manager alias="authenticationManager">
+      <authentication-provider user-service-ref="userDao"> 
+       <!-- <password-encoder ref="passwordEncoder"/> -->
+      <password-encoder hash="plaintext"/>
+    </authentication-provider>
+
+    </authentication-manager> 
+    
+    <!--
+    Usernames/Passwords are
+        rod/koala
+        dianne/emu
+        scott/wombat
+        peter/opal
+    -->
+   <!--
+    <authentication-provider>
+        <password-encoder hash="plaintext"/>
+        <user-service>
+            <user name="rod" password="12345" authorities="ROLE_SUPERVISOR, ROLE_USER, ROLE_TELLER" />
+            <user name="dianne" password="65d15fe9156f9c4bbffd98085992a44e" authorities="ROLE_USER,ROLE_TELLER" />
+            <user name="scott" password="2b58af6dddbd072ed27ffc86725d7d3a" authorities="ROLE_USER" />
+            <user name="peter" password="22b5c9accc6e1ba628cedc63a72d57f8" authorities="ROLE_USER" />
+        </user-service>
+    </authentication-provider>
+    -->
+</beans:beans>

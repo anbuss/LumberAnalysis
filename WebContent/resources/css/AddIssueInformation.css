@@ -1,0 +1,50 @@
+/* 
+    Document   : searchIssueInformation
+    Created on : Aug 14, 2012, 7:43:25 AM
+    Author     : samidoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.col1{
+    width: 15%;
+}
+.col2{
+    width: 25%;
+}
+.col3{
+    width: 15%;
+}
+.col4{
+    width: 25%;
+}
+
+.colExt1{
+    width: 18.5%;
+}
+.colExt2{
+    width: 81.5%;
+}
+.colContact1{
+    width: 25%;
+}
+.colContact2{
+    width: 40%;
+}
+.colContact3{
+    width: 45%;
+}
+.colContactFirst{
+    width: 50%;
+}
+.colContactTwo{
+    width: 45%;
+}
+.colContactThree{
+    width: 5%;
+    
+}

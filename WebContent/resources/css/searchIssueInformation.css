@@ -1,0 +1,155 @@
+/* 
+    Document   : searchIssueInformation
+    Created on : Aug 14, 2012, 7:43:25 AM
+    Author     : samidoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.applicationSelectOneMenu{ 
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    height: 17px;
+    width: 135px;
+}
+.facetHeaderText {
+    
+    font-size: 18px;
+    color: #000000;  
+    margin: 17px;
+    
+    border-right: thick double #ff0000;
+    font-weight: bold
+}
+.facetOutputText {
+    vertical-align: -15%;
+}
+.facetTextbox{ 
+    height: 12px;
+    vertical-align: -25%;
+}
+.errorTextbox{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    height: 12px;
+    width: 70px;
+    vertical-align: -15%;
+}
+.button_go {    
+    font-size: 10px;
+    color: #000000;  
+    margin: 10px;
+    font-weight: bold;
+    height: 25px;
+    width: 45px;
+    margin: 0 auto;
+    position: absolute; display:block; float:right;
+}
+.panelGridHeaderMedium{
+    font-size: 15px;
+    color: #000000;  
+    margin: 17px;
+    font-weight: bold;
+    background-color:#98bf21; 
+    text-align:left;
+    margin: 0 auto;
+    height: 25px;
+}
+
+
+.issue-table{   
+   
+    table-layout:fixed;
+    overflow-wrap: break-word;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 100%;
+    border:1px solid green;
+
+}
+
+.issue-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+}
+
+.issue-table-header2{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+    width:10%;
+}
+.issue-table-header3{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+    width:10%;
+}
+.issue-table-header4{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+    width:10%;
+}
+.issue-table-odd-row{
+    text-align:left;
+    background:#FFFFFF;
+   /* border-top:1px solid #BBBBBB; */
+    /* font-family:Verdana, Arial, Helvetica, sans-serif; */
+    font-size:12px;
+    border:1px solid green;
+}
+
+.issue-table-even-row{
+    text-align:center;
+    background:#EAF2D3;
+    border-top:1px solid #BBBBBB;
+    /* font-family:Verdana, Arial, Helvetica, sans-serif; */
+    font-size:12px;
+}
+.issue-table-col-appname{
+    text-align:left;
+    width:10%;
+    
+}
+.issue-table-col-appversion{
+    text-align:left;
+    width:10%;
+    
+}
+.issue-table-col-errorcode{
+   text-align:center;
+   width:10%;    
+}
+
+
+.issue-table-message-col{
+    text-align:left;
+    word-wrap: break-word;
+    width:70%;
+}
+.hovcolor{
+background-color: #4f8c00;
+color:#FFF;
+cursor:pointer;
+}

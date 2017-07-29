@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "LAMenu.dtd">
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<menus>
+    <menu name="Home" order="1">
+        <url>home/success.xhtml</url>
+        <captin>Home</captin>
+        <role>ROLE_ADMIN:ROLE_USER</role>
+    </menu>
+    <menu name="Logviewer" order="2">
+        <url>logviewer/logviewer.xhtml</url>
+        <captin>Log Viewer</captin>
+        <role>LOGVIEWER:ROLE_ADMIN:ROLE_USER</role>
+    </menu>
+    <menu name="pandg" order="3">
+        <url>issueInfo/searchIssueInformation.xhtml</url>
+        <captin>Manage P and S</captin>
+        <role>ROLE_ADMIN</role>
+        <child NAME = "pandgMan">
+            <menu name="p_1" order="1" parent="pandg">
+                <url>issueInfo/addIssueInformation.xhtml</url>
+                <captin>New P and S</captin>        
+            </menu>
+            <menu name="p_2" order="2" parent="pandg">
+                <url>issueInfo/searchIssueInformation.xhtml</url>
+                <captin>Search P and S</captin>        
+            </menu>
+        </child>
+    </menu>
+    <menu name="upm" order="4">
+        <url>#</url>
+        <captin>Manage User's</captin>
+        <role>ROLE_ADMIN</role>
+        <child NAME = "userMan">
+            <menu name="Three_1" order="1" parent="upm">
+                <url>usermanagement/signupGold.xhtml</url>
+                <captin>New User</captin>        
+            </menu>
+            <menu name="Three_2" order="2" parent="upm">
+                <url>usermanagement/userList.xhtml</url>
+                <captin>Search User</captin>        
+            </menu>
+        </child>
+    </menu>    
+</menus>

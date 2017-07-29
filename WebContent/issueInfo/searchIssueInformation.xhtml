@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <body >
+
+        <ui:composition template="/template/LumberTemplate.xhtml">
+            <ui:define name="content">
+
+                <link href="../resources/css/searchIssueInformation.css" rel="stylesheet" type="text/css" id="localSheet" />
+
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+                <script src="../scripts/datatable/jquery.dataTables.js" type="text/javascript"></script>
+
+                <script> 
+                    
+                    $(document).ready(function () {
+                        $("#memberTable tr").hover(function(){
+                            if ($(this).attr("id") != null)
+                                ;
+                            else
+                            $(this).addClass("hovcolor");
+                        }, function(){
+                            if ($(this).attr("id") != null)
+                                ;
+                            else
+                                $(this).removeClass("hovcolor");
+                        });
+                        $('#memberTable tr').click(function () {
+                            var href = $(this).attr("id");
+                            if (href == null || href == ''){
+                                var rowid = $(this).next('tr');
+                                href = rowid.attr("id");
+                                if (href != null ){
+                                    if (rowid.is(':visible'))
+                                        rowid.hide();
+                                    else
+                                        rowid.show();
+                                }
+                                var hrefc = $(this).attr("id");
+                                var rowcid = $(this).next('tr').next('tr');
+                                hrefc = rowcid.attr("id");
+                                if (hrefc != null ){
+                                    if (rowcid.is(':visible'))
+                                        rowcid.hide();
+                                    else
+                                        rowcid.show();
+                                }
+                            }   
+                        });
+                         
+                    });
+                </script>
+                <h:form id="psData" prependId="false">
+                    <h:messages showDetail="#{true}" showSummary="#{false}" />
+                    <h:panelGrid columns="3" style="width:100%; overflow:auto;" >
+                        <f:facet class="panelGridHeaderMedium" name="header" > 
+                            <div class="panelGridHeaderMedium" style="border-width:3px;border-bottom:solid;border-top: solid;border-color: #00A400"> 
+                                <h:outputText class="facetHeaderText facetOutputText" value="Looking for "></h:outputText>
+                                <h:outputText class="outputText facetOutputText" value="Application Name :"></h:outputText>
+
+                                <h:selectOneMenu  id="type" value="#{psBean.categorytype}" class="selectManyListbox">
+                                    <f:selectItems value="#{psBean.appNames}" />
+                                </h:selectOneMenu>
+
+                                <h:outputText id="errorCode" class="outputText facetOutputText" value="Error Code :"></h:outputText>
+                                <h:inputText  value="#{psBean.errorCode}" class="errorTextbox"></h:inputText>
+
+                                <h:outputText id="freeText" class="outputText facetOutputText" value="Tag's/Message :"></h:outputText>
+                                <h:inputText  value="#{psBean.tag_Message}" class="textbox facetTextbox"></h:inputText>
+
+
+                                <h:commandButton id="goButton" type="submit" value="Go"  class="button_go"
+                                                 actionListener="#{psBean.go}" >
+                                    <f:ajax execute="@form" render="memberTable" /> 
+                                </h:commandButton>
+                            </div>
+                        </f:facet>
+
+                        <BR /> <BR /> <BR /> <BR /> <BR /> <BR />
+                        <div class="width:10%; overflow-x: scroll; " >
+                        <h:dataTable id="memberTable" value="#{psBean.result}" var="logRowForView" 
+                                     styleClass="issue-table"  headerClass="issue-table-header"
+                                     rowClasses="issue-table-odd-row, issue-table-even-row" 
+                                     columnClasses="issue-table-col-appname,issue-table-col-appversion,issue-table-col-errorcode,issue-table-message-col">
+                            
+                                <h:column >
+                                    <f:facet name="header" ><h:outputText style="width:10%;font-size:15px;font-weight: bold;" value="App Name"/></f:facet> 
+                                    #{logRowForView.providerName}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><h:outputText style="font-size:15px;font-weight: bold;" value="Version/sub name"/></f:facet>
+                                    #{logRowForView.providerVersion}
+                                </h:column>
+                                <h:column class="nowrap">
+                                    <f:facet name="header"><h:outputText style="font-size:15px;font-weight: bold;" value="Error code"/></f:facet>
+                                   
+                                    <h:outputLink value="addIssueInformation.xhtml">
+                                        <h:outputText value="#{logRowForView.providerIssueId}" />
+                                        <f:param name="psid" value="#{logRowForView.id}" />
+                                    </h:outputLink>
+                                </h:column>
+                                <h:column class="nowrap">
+                                    <f:facet name="header"><h:outputText style="font-size:15px;font-weight: bold;" value="Short Description"/></f:facet>
+                                    #{logRowForView.shortDescription}
+                                    <h:outputText value="#{psBean.rowStart}" escape="false" />
+                                    #{logRowForView.description} 
+                                    
+                                    <h:outputText value="#{psBean.rowCauseStart}" escape="false" />
+                                    #{logRowForView.cause} 
+                                    <h:outputText value="#{psBean.rowEnd}" escape="false" /> 
+                                </h:column>
+                                 
+                        </h:dataTable>
+                            </div>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

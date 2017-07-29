@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <body>
+        <ui:composition template="./template/default.xhtml">
+
+            <ui:define name="content">
+                <link href="./resources/css/login.css" rel="stylesheet" type="text/css" id="localSheet" />
+                <h:form id="loginForm" prependId="false" >
+                    <h:messages showDetail="#{true}" showSummary="#{false}" />
+                    <h:panelGrid columns="1" style="width:30%;" styleClass="borderBox" headerClass="panelGridHeader">
+                        <f:facet class="panelGridHeader" name="header" > 
+                            <div class="panelGridHeader" style="background-color:#98bf21;border-width:3px;border-bottom:solid;border-top: solid;border-color: #00A400">
+                                <h:panelGrid   columns="1" columnClasses="panelGridHeader" style="overflow:auto;background-color:#98bf21; ">
+                                    <h:outputText class="panelGridHeader" value="Login "/>
+                                </h:panelGrid>
+                            </div>
+
+                        </f:facet>
+                        <h:outputLabel class="lblDiv" value="User Name" for="j_username" />                      
+
+                        <h:inputText style="width: 65%" id="j_username" class="lblContent"
+                                     size="40" maxlength="80" value="#{loginCheck.username}">
+                            <!-- f:ajax  event="keyup" render="error" listener="#{loginCheck.verify}"/ --></h:inputText>
+                        <!-- h:outputText id="error" value="#{loginCheck.error}"/ -->
+
+                        <h:outputLabel class="lblDiv" value="Password" for="j_password" />
+                        <h:panelGrid style="width: 100%" columns="2" columnClasses="login_col1,login_col2">
+                            <h:panelGroup>
+                            <h:inputSecret style="width: 90%" id="j_password" class="lblContent"
+                                           size="40" maxlength="80" value="#{loginCheck.password}"
+                                           redisplay="true" ></h:inputSecret>
+                            &nbsp;
+                            </h:panelGroup>
+                            <h:commandButton id="doLogin" action="#{loginCheck.doLogin}" value="Login" class="button_rounded" />
+                        
+                            </h:panelGrid>
+                        <h:messages id="messages" layout="table" globalOnly="true"
+                                    showSummary="true" showDetail="false" />
+                    </h:panelGrid>  
+
+
+                </h:form>             
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

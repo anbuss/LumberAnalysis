@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: Anbu S Samidoss
+Product-Name:  LumberAnalysis
+Package-Title: com.lumberanalysis
+Package-Version: 0.5 (Beta)
+Package-Vendor: Anbu S Samidoss
+Class-Path: logviewerEngine_1.0.jar
+Sealed: true
+

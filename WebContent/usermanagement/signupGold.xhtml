@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="/template/LumberTemplate.xhtml">
+
+            <ui:define name="content">
+                <script>
+                   
+                    $(function () {
+                        $("#email").blur(function() {
+                            debugger;
+                         
+                            var sEmail = $("#email").val();
+                            debugger;
+                            if ($.trim(sEmail).length == 0) {
+                                alert('Please enter valid email address');
+                                e.preventDefault();
+                            }
+                            if (validateEmail(sEmail)) {
+                                alert('Email is valid');
+                            }
+                            else {
+                                alert('Invalid Email Address');
+                                e.preventDefault();
+                            }
+                        });
+    
+                    });
+                    function validateEmail(sEmail) {
+                        var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                        if (filter.test(sEmail)) {
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }​;
+
+                </script>
+                <h:form prependId="false">
+
+                    <h:panelGrid columns="3">
+                        <f:facet class="panelGridHeader" name="header" > 
+                            <div class="panelGridHeader">
+                                New User  
+                            </div>
+                        </f:facet>
+                        <h:outputText class="outputText" value="Username :"></h:outputText>
+                        <h:inputText id="username" value="#{regBean.user.username}" class="textbox"
+                                     required="true" requiredMessage="Please Enter Username!"></h:inputText>
+                        <h:message for="username" />
+
+                        <h:outputText class="outputText" value="Password :"></h:outputText>
+                        <h:inputSecret id="password" value="#{regBean.user.password}" class="textbox"
+                                       required="true" requiredMessage="Please Enter Password!"></h:inputSecret>
+                        <h:message for="password" />
+
+                        <h:outputText class="outputText" value="Confirm Password :"></h:outputText>
+                        <h:inputSecret id="confirmpassword"
+                                       value="#{regBean.user.confirmPassword}" required="true" class="textbox"
+                                       requiredMessage="Please Confirm Password!"></h:inputSecret>
+                        <h:message for="confirmpassword" />
+
+                        <h:outputText class="outputText" value="Password Hint:"></h:outputText>
+                        <h:inputSecret id="hintAnswer"
+                                       value="#{regBean.user.confirmPassword}" required="true" class="textbox"
+                                       requiredMessage="Please Confirm Password!"></h:inputSecret>
+                        <h:message for="hintAnswer" />
+
+                        <h:outputText class="outputText" value="First name :"></h:outputText>
+                        <h:inputText id="firstname" value="#{regBean.user.firstName}" class="textbox"
+                                     required="true" requiredMessage="Please Enter First Name!"></h:inputText>
+                        <h:message for="firstname" />
+
+                        <h:outputText class="outputText" value="Last name :"></h:outputText>
+                        <h:inputText id="lastname" value="#{regBean.user.lastName}" class="textbox"
+                                     required="true" requiredMessage="Please Enter Last Name!"></h:inputText>
+                        <h:message for="lastname" />
+
+                        <h:outputText class="outputText" value="Email :"></h:outputText>
+                        <h:inputText id="email" value="#{regBean.user.email}" required="true" class="textbox"
+                                     requiredMessage="Please Enter Email!"></h:inputText>
+                        <h:message for="email" />
+
+
+                        <h:outputText class="outputText" value="Street Name :"></h:outputText>
+                        <h:inputText id="street" value="#{regBean.user.address.address}" required="true" class="textbox"
+                                     requiredMessage="Please Enter Street Name!"></h:inputText>
+                        <h:message for="street" />
+
+                        <h:outputText class="outputText" value="City :"></h:outputText>
+                        <h:inputText id="city" value="#{regBean.user.address.city}" required="true" class="textbox"
+                                     requiredMessage="Please Enter City!"></h:inputText>
+                        <h:message for="city" />
+
+                        <h:outputText class="outputText" value="Zip :"></h:outputText>
+                        <h:inputText id="zip" value="#{regBean.user.address.postalCode}" required="true" class="textbox"
+                                     requiredMessage="Please Enter Zip Code!"></h:inputText>
+                        <h:message for="zip" />
+
+                        <h:outputText class="outputText" value="State/Province :"></h:outputText>
+                        <h:inputText id="province" value="#{regBean.user.address.province}" class="textbox"
+                                     required="true" requiredMessage="Please Enter State/Province!"></h:inputText>
+                        <h:message for="province" />
+
+
+                        <h:outputText class="outputText" value="Activate :"></h:outputText>
+                        <h:selectBooleanCheckbox id="activate" value="#{regBean.user.enabled}" class="textbox"
+                                                 required="false" requiredMessage="Please Enter State/Province!"></h:selectBooleanCheckbox>
+
+                        <h:outputText class="outputText" value="   "></h:outputText>
+
+                        <h:outputText class="outputText" value="Roles :"></h:outputText>
+                        <h:selectManyListbox id="roles" value="#{regBean.selectedRoles}" class="textbox"
+                                             required="true" requiredMessage="Select Atleast One!">
+                            <f:selectItems value="#{regBean.allRoles}" var="role"
+                                           itemLabel="#{role.name}" itemValue="#{role.id}" />
+                        </h:selectManyListbox>
+                        <h:message for="roles" />
+
+                        <h:commandButton type="submit" value="Submit"
+                                         action="#{regBean.save}"></h:commandButton>
+                        <h:commandButton type="reset" value="Reset"></h:commandButton>
+                    </h:panelGrid>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

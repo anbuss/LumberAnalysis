@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <h:panelGrid columns="3"  style="border-style:dotted;border-width:1px;width:635px;overflow:auto;" >
+        <f:facet class="panelGridHeader" name="header" > 
+            <div class="panelGridHeaderRight" style="border-width:3px;border-bottom:solid;border-top: solid;border-color: #00A400">
+                 <h:panelGrid   columns="2" columnClasses="panelGridHeader,panelGridHeaderRight" style="width:700px;overflow:auto;">
+                         <h:outputLabel value="#{logViewerBean.rp.reportName}"  />
+                         <h:commandButton id="showchart" type="submit" label="Refresh" value="Show Chart" image="../images/refresh16x16.png"  class="button_16x16"
+                                 actionListener="#{logViewerBean.displaySelectedChart}" >
+                    <f:ajax execute="@all" immediate="true" onevent="drawChart"  render="graph" /> 
+                </h:commandButton>
+                    </h:panelGrid>
+              </div>
+        </f:facet>
+        <h:panelGrid columns="1"  >
+            <h:panelGroup id="graph" >
+                <h:inputHidden id="catt" value="#{logViewerBean.chartCategory}" ></h:inputHidden>
+                <h:inputHidden id="dataValue1" value="#{logViewerBean.chartData}" ></h:inputHidden>
+                <div id="container" style="min-width: 700px; height: 350px; margin: 0 auto"></div>
+            </h:panelGroup>
+        </h:panelGrid>
+
+    </h:panelGrid>
+</ui:composition>

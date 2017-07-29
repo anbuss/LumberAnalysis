@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   <!-- Makes a ColorPreferences bean with default colors. -->
+   <!-- <bean id="colorPreferences" class="coreservlets.ColorPreferences"
+          scope="session">
+        <property name="foreground" value="black"/>
+        <property name="background" value="#fdf5e6"/>
+    </bean>-->
+
+    <!-- Instantiates MapCustomerLookupService with a few sample customers. -->
+  <!--  <bean id="sampleLookupService" class="coreservlets.MapCustomerLookupService">
+        <property name="sampleCustomers">
+            <map>
+                <entry key="a1234">
+                    <bean class="coreservlets.Customer">
+                        <property name="customerID" value="a1234"/>
+                        <property name="firstName" value="Rod"/>
+                        <property name="lastName" value="Johnson"/>
+                        <property name="balance" value="123.45"/>
+                    </bean>
+                </entry>
+                <entry key="a1235">
+                    <bean class="coreservlets.Customer">
+                        <property name="customerID" value="a1235"/>
+                        <property name="firstName" value="Gary"/>
+                        <property name="lastName" value="Mak"/>
+                        <property name="balance" value="4567.89"/>
+                    </bean>
+                </entry>
+                <entry key="a1236">
+                    <bean class="coreservlets.Customer">
+                        <property name="customerID" value="a1236"/>
+                        <property name="firstName" value="Craig"/>
+                        <property name="lastName" value="Walls"/>
+                        <property name="balance" value="78901.23"/>
+                    </bean>
+                </entry>
+                <entry key="a1237">
+                    <bean class="coreservlets.Customer">
+                        <property name="customerID" value="a1237"/>
+                        <property name="firstName" value="Matt"/>
+                        <property name="lastName" value="Cherry"/>
+                        <property name="balance" value="101112.13"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>-->
+    <bean id="menuCreateService" class="com.lumberanalysis.webapp.action.menu.MenuCreateService" scope="session">
+        <property name="mapMenuModel">
+            <map>
+                <entry key="ROLE_ANONYMOUS" >
+                    <list>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="1"/>
+                            <property name="label" value="Home"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!--<property name="childMenus">
+                            <list value-type="com.spring.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+                        </property>-->
+                        </bean>
+                    </list>
+
+
+                </entry>
+                <entry key="ROLE_USER">
+                    <list>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="1"/>
+                            <property name="label" value="Home"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.spring.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="2"/>
+                            <property name="label" value="Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!--  <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <ref bean="sub2.1" />
+                                <ref bean="sub2.2"/>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean id="sub1.2.1" class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="3"/>
+                            <property name="label" value="Customer Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!--<property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean id="sub1.2.2" class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="4"/>
+                            <property name="label" value="Product Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                    </list>
+
+                </entry>
+                <entry key="ROLE_ADMIN">
+                    <list>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="1"/>
+                            <property name="label" value="Home"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="2"/>
+                            <property name="label" value="Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <ref bean="sub2.1" />
+                                <ref bean="sub2.2"/>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean id="sub2.2.1" class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="3"/>
+                            <property name="label" value="Customer Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean id="sub2.2.2" class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="4"/>
+                            <property name="label" value="Product Search"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                        <bean class="com.lumberanalysis.webapp.util.MenuModel">
+                            <property name="id" value="5"/>
+                            <property name="label" value="Admin"/>
+                            <property name="link" value="/success.jsf"/>
+                            <!-- <property name="childMenus">
+                            <list value-type="com.lumberanalysis.webapp.util.MenuModel">
+                                <null></null>
+                            </list>
+
+                        </property>-->
+                        </bean>
+                    </list>
+
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <!--  <m
+  <bean name="menu1" class="com.lumberanalysis.webapp.util.MenuModel">
+      <property name="label" value="Search"/>
+      <property name="link" value=""
+    </bean>-->
+</beans>

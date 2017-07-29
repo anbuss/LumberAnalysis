@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="./css/styles.css" rel="stylesheet" type="text/css" />
+        <!--<link href="./css/ddlevelsmenu-base.css" type="text/css"/>
+        <link href="./css/ddlevelsmenu-sidebar.css" type="text/css"/>
+        <link href="./css/ddlevelsmenu-topbar.css" type="text/css"/>-->
+        <script type="text/javascript" src="./scripts/prototype.js"></script>
+        <script type="text/javascript" src="./scripts/scriptaculous.js"></script>
+        <script type="text/javascript" src="./scripts/global.js"></script>
+        <script type="text/javascript" src="./scripts/ddlevelsmenu.js"></script>
+        <h:outputScript library="javax.faces" name="jsf.js"/>
+        <script type="text/javascript">
+            ddlevelsmenu.setup("ddtopmenubar", "topbar");
+        </script>
+
+        <title>Lumber Analysis</title>
+    </h:head>
+
+    <h:body>
+
+
+        <div class="outer-div">
+            <!--<div id="top">-->
+            <ui:insert name="top">
+
+
+                <div class="whole-div">
+                    <div class="header-left">
+                        <div class="logo">
+                            <img src="images/logo.jpg" height="36" width="166" border="0" />
+                        </div>
+                    </div>
+                    <div class="curve">
+                        <img src="images/curve.jpg" height="38" width="27" border="0" />
+                    </div>
+                    <div class="middle-div">
+                        <div class="search">
+
+
+                            <input type="text" style="border:0px; width:190px; padding-left:18px; height:19px; background:url(images/search.jpg) no-repeat;" value="Search" onfocus="if(this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value=this.defaultValue;"/>
+
+                        </div>
+                        <div class="top-menu">
+                            <a href="#" class="blue">Home      </a> &nbsp;| &nbsp;<a href="#" class="blue">Contact  </a> &nbsp;| &nbsp;<a href="#" class="blue">Support  </a>
+                        </div>
+                    </div>
+                    <div class="curve-rght">
+                        <img src="images/curve-right.jpg" height="38" width="50" border="0" />
+                    </div>
+                </div>
+                <div class="whole-div">
+                    <div class="mattblackmenu" id="ddtopmenubar">
+                        <ul>
+                            <li><a href="index.jsf">Home</a></li>
+                            <li><a href="search.jsf" class="">Search</a></li>
+                            <li><a href="sendMail.jsf" class="">Send Mail</a></li>
+                            <li><a rel="ddsubmenu2" href="#">Administrator</a></li>
+                            <li><a href="Logout.jsp" class="">Logout</a></li>
+                        </ul>
+                    </div>
+
+
+                    <!--Top Drop Down Menu 2 HTML-->
+
+                    <ul id="ddsubmenu2" class="ddsubmenustyle">
+                        <li><a href="manageUser.jsf">Manage User</a></li>
+                        <li><a href="activeUsers.jsf">Active Users</a></li>
+                    </ul>
+
+
+
+
+                </div>
+
+            </ui:insert>
+
+            <div class="whole-div">
+
+                <div id="left">
+                    <ui:insert name="left">Left</ui:insert>
+                </div>
+
+                <div id="right">
+                    <ui:insert name="right">Right</ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+
+                <div id="bottom">
+                    <ui:insert name="bottom">Bottom</ui:insert>
+                </div>
+            </div>
+
+        </div>
+    </h:body>
+
+</html>

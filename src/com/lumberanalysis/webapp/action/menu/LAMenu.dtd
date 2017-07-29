@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/LAMenu.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE menus SYSTEM "LAMenu.dtd">
+
+    <menus>
+    ...
+    </menus>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT menus (menu)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT menu (child|role|captin|url)*>
+<!ATTLIST menu
+    parent CDATA #IMPLIED
+    order CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT url (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT captin (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT role (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT child (menu)*>
+<!ATTLIST child
+    NAME CDATA #IMPLIED
+  >

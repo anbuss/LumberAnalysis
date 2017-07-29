@@ -1,0 +1,178 @@
+/* 
+    Document   : logviewer
+    Created on : Jun 2, 2012, 10:00:49 AM
+    Author     : samidoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.ui-tree-node-label{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    height: 17px;
+    width: 132px;  
+}
+.ui-tree-checkbox{position:relative;line-height:5px;width:5px;margin:0;float:left;}
+.ui-inputfield{
+    position:relative;height:17px;width:132px;margin:0;float:left;
+}
+
+.log-table{   
+   
+    table-layout:fixed;
+    overflow-wrap: break-word;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 700px;
+     border:1px solid green;
+
+}
+
+.log-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+    width:50px;
+}
+.log-table-header2{
+    text-align:center;
+    background:none repeat scroll 0 0 #98bf21;
+    /*border-bottom:1px solid #BBBBBB; */
+    padding:1px;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size:18px;
+    border:1px solid green;
+    width:10px;
+}
+
+.log-table-odd-row{
+    text-align:left;
+    background:#FFFFFF;
+   /* border-top:1px solid #BBBBBB; */
+    /* font-family:Verdana, Arial, Helvetica, sans-serif; */
+    font-size:12px;
+    border:1px solid green;
+}
+
+.log-table-even-row{
+    text-align:center;
+    background:#EAF2D3;
+    border-top:1px solid #BBBBBB;
+    /* font-family:Verdana, Arial, Helvetica, sans-serif; */
+    font-size:12px;
+}
+.log-table-col{
+    text-align:left;
+    width:50px;
+    
+}
+.log-table-col2{
+    text-align:left;
+    width:10px;
+    
+}
+.log-table-message-col{
+    text-align:left;
+    word-wrap: break-word;
+}
+
+.logviewer_left_content{
+    vertical-align: top;
+    
+}
+
+.logviewer_right_content{
+     vertical-align: top
+}
+
+.allignLeft{
+    align:left;
+}
+/* Used for reference */
+#logviewer:memberTable
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#logviewer:memberTable td, #logviewer:memberTable th 
+{
+font-size:1.2em;
+border:1px solid #98bf21;
+padding:3px 7px 2px 7px;
+}
+#logviewer:memberTable th 
+{
+font-size:1.4em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#fff;
+}
+#logviewer:memberTable tr.alt td 
+{
+color:#000;
+background-color:#EAF2D3;
+}
+
+
+
+.spinner {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -50px; /* half width of the spinner gif */
+	margin-top: -50px; /* half height of the spinner gif */
+	text-align:center;
+	z-index:1234;
+	overflow: auto;
+	width: 100px; /* width of the spinner gif */
+	height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nodeContent { margin-left:20px;}
+.documentStyle {background: url(doc.png) no-repeat;}
+.pictureStyle {background: url(picture.png) no-repeat;}
+.mp3Style {background: url(mp3.png) no-repeat;}
+/* Folder Theme */
+.ygtvtn {background:url(tn.gif) 0 0 no-repeat; width:17px;height:22px;}
+.ygtvtm {background:url(tm.gif) 0 0 no-repeat; width:34px;height:22px;
+cursor:pointer}
+.ygtvtmh {background:url(tmh.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer}
+.ygtvtp {background:url(tp.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer}
+.ygtvtph { background: url(tph.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer }
+.ygtvln { background: url(ln.gif) 0 0 no-repeat; width:17px; height:22px; }
+.ygtvlm { background: url(lm.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer }
+.ygtvlmh { background: url(lmh.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer }
+.ygtvlp { background: url(lp.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer }
+.ygtvlph { background: url(lph.gif) 0 0 no-repeat; width:34px; height:22px;
+cursor:pointer }

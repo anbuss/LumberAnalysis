@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <body >
+
+        <ui:composition template="/template/LumberTemplate.xhtml">
+            <ui:define name="content">
+                
+                <link href="../resources/css/logviewer.css" rel="stylesheet" type="text/css" id="localSheet" />
+
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+                <script src="../scripts/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+                
+                <script src="../scripts/jquery-ui-addon/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+                <link href="../scripts/jquery-ui-addon/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+                
+                <script src="../scripts/Highcharts-2.2.5/highcharts.js" type="text/javascript"></script>
+                <script src="../scripts/Highcharts-2.2.5/modules/exporting.js" type="text/javascript"></script>
+                <script type="text/javascript" src="../scripts/tablesorter/jquery.tablesorter.js"></script> 
+
+                <script>
+                   
+                    $(function () {
+                        //$.noConflict();
+                        $( "#datepicker" ).datetimepicker();
+                        $( "#datepickerEnd" ).datetimepicker();
+                        jQuery( "#tabs" ).tabs();
+                        jQuery('#tabs').bind('tabsselect', function(event, ui) {
+                            if (ui.panel.id == 'tabs-2') {
+                                $('#showchart').click();
+                            }
+                        });
+                         $("#memberTable").tablesorter(); 
+                        $("#showchart").click(drawChart)
+                        $("#memberTable tr").hover(function(){
+                            $(this).addClass("hovcolor");
+                        }, function(){
+                            $(this).removeClass("hovcolor");
+                        });
+                        $('#memberTable tr').click(function () {
+                            var href = $(this).attr("id");
+                            if (href == null || href == ''){
+                                var rowid = $(this).next('tr');
+                                href = rowid.attr("id");
+                                if (href != null ){
+                                    if (rowid.is(':visible'))
+                                        rowid.hide();
+                                    else
+                                        rowid.show();
+                                }
+                            }   
+                        });
+            
+                    });
+                    function drawChart(){
+                        var chart;
+                        //debugger;
+                        var cate = $("#catt");//.val();
+                        
+                        if (cate == null)
+                            return;
+                        else
+                            cate = cate.val();
+                        
+                        var vall = $("#dataValue1")//.val();
+                        if (vall == null)
+                            return;
+                        else
+                            vall = vall.val();
+                        // alert(vall);
+                        vall =  jQuery.parseJSON(vall);
+
+                        
+                        debugger;
+                        //  $(document).ready(function() {
+        
+                            
+                        chart = new Highcharts.Chart({
+                            chart: {
+                                renderTo: 'container',
+                                type: 'column',
+                                    
+                                events: {
+                                    load: function(event) {
+                                        //  alert (chart);
+                
+                                        //When is chart ready?
+                                        setTimeout(function() {
+                                            //  alert(chart);
+                                        }, 1000);
+                                    },
+                                    redraw: function(event) {
+                                        var cate = $("#catt");//.val();
+                        
+                                        if (cate == null)
+                                            return;
+                                        else
+                                            cate = cate.val();
+                                        
+                                        debugger;
+                                        var vall = $("#dataValue1")//.val();
+                                        if (vall == null)
+                                            return;
+                                        else
+                                            vall = vall.val();
+                                        // alert(vall);
+                                        vall =  jQuery.parseJSON(vall);
+                                        setTimeout(function() {                                              
+                                        }, 1000);
+                                    }
+                                        
+                                }
+                            },
+                                
+                            title: {
+                                text: ''
+                            },
+                            xAxis: {                                       
+                                categories: cate.split(',')                             
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Total log type\'s'
+                                },
+                                stackLabels: {
+                                    enabled: true,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: (Highcharts.theme) || 'gray'
+                                    }
+                                }
+                            },
+                            legend: {
+                                align: 'right',
+                                x: -100,
+                                verticalAlign: 'top',
+                                y: 20,
+                                floating: true,
+                                backgroundColor: (Highcharts.theme) || 'white',
+                                borderColor: '#CCC',
+                                borderWidth: 1,
+                                shadow: false
+                            },
+                            tooltip: {
+                                formatter: function() {
+                                    return '<b>'+ this.x +'</b><br/>'+
+                                        this.series.name +': '+ this.y +'<br/>'+
+                                        'Total: '+ this.point.stackTotal;
+                                }
+                            },
+                            column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+                            credits:{
+                                enabled :false
+                            },
+                            series: vall
+                        });
+                        //  chart.series[0].setData(vall, true);
+
+                        //});
+                    }
+                    function showProgress(data) {
+                        var ajaxstatus = data.status; // Can be "begin", "complete" and "success"
+                        var ajaxloader = document.getElementById('#ajaxloader');
+                       
+
+                        switch (ajaxstatus) {
+                            case 'begin': // This is called right before ajax request is been sent.
+                                ajaxloader.style.display = 'block';
+                                break;
+
+                            case 'complete': // This is called right after ajax response is received.
+                                ajaxloader.style.display = 'none';
+                                break;
+
+                            case 'success': // This is called when ajax response is successfully processed.
+                                // NOOP.
+                                break;
+                        }
+                        return false;
+                    };
+
+                </script>
+
+
+                <h:form id="logviewer" prependId="false">
+                    <h:messages showDetail="#{true}" showSummary="#{false}" />
+                    <h:panelGrid columns="2" frame="vsides" id="logviewerlayout" columnClasses="logviewer_left_content, logviewer_right_content">
+                        <p:tree value="#{logViewerBean.root}" var="node" id="checkboxTree"   
+                                selectionMode="checkbox"  style="height:400px; width:235px;overflow:auto;"
+                                selection="#{logViewerBean.selectedNodes}" dynamic="true"  >  
+
+                            <p:ajax event="select"  update="@this"  listener="#{logViewerBean.onNodeSelect}" />
+
+                            <p:ajax event="unselect"  update="@this" listener="#{logViewerBean.onNodeUnselect}" />
+                            <p:treeNode>  
+                                <h:outputText value="#{node.text}" />  
+                            </p:treeNode>  
+                        </p:tree>                       
+                        <h:panelGroup>
+
+                            <div id="tabs">
+                                <ul>
+                                    <li><a href="#tabs-1">Search</a></li>
+                                    <li><a href="#tabs-2">Chart</a></li>
+                                   
+                                </ul>
+                                <div id="tabs-1">
+                                    <h:panelGrid columns="1" style="width:710px;overflow:auto;">
+                                        <ui:include src="search.xhtml"></ui:include>
+                                        
+                                            
+                                            <ui:include src="result.xhtml" ></ui:include>
+                                       
+                            
+                                        
+                                    </h:panelGrid>
+                                </div>
+                                <div id="tabs-2">
+                                    <ui:include src="chart.xhtml"></ui:include>
+
+                                </div>
+                                
+                            </div>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

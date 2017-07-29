@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <body>
+        
+        <ui:composition template="./template/default.xhtml">
+            <ui:define name="content">
+            <h:form>
+                       
+        <h:panelGrid columns="2">
+            <h:outputText value="Username :"></h:outputText>
+            <h:inputText id="username" value="#{regBean.user.username}"
+                required="true" requiredMessage="Please Enter Username!"></h:inputText>
+ 
+            <h:outputText value="Password :"></h:outputText>
+            <h:inputSecret id="password" value="#{regBean.password}"
+                required="true" requiredMessage="Please Enter Password!"></h:inputSecret>
+ 
+            <h:outputText value="Confirm Password :"></h:outputText>
+            <h:inputSecret id="confirmpassword"
+                value="#{regBean.confirmpassword}" required="true"
+                requiredMessage="Please Confirm Password!"></h:inputSecret>
+ 
+            <h:outputText value="First name :"></h:outputText>
+            <h:inputText id="firstname" value="#{regBean.firstname}"
+                required="true" requiredMessage="Please Enter First Name!"></h:inputText>
+ 
+            <h:outputText value="Last name :"></h:outputText>
+            <h:inputText id="lastname" value="#{regBean.lastname}"
+                required="true" requiredMessage="Please Enter Last Name!"></h:inputText>
+ 
+            <h:outputText value="Date of Birth :"></h:outputText>
+            <h:inputText id="dob" value="#{regBean.dob}" required="true"
+                requiredMessage="Please Enter Date of Birth!"></h:inputText>
+ 
+            <h:outputText value="Email :"></h:outputText>
+            <h:inputText id="email" value="#{regBean.email}" required="true"
+                requiredMessage="Please Enter Email!"></h:inputText>
+ 
+            <h:outputText value="Confirm Email :"></h:outputText>
+            <h:inputText id="confirmemail" value="#{regBean.confirmemail}"
+                required="true" requiredMessage="Please Confirm Email!"></h:inputText>
+ 
+            <h:outputText value="User Roles :"></h:outputText>
+            <h:selectManyListbox id="groups" value="#{regBean.selectedGroups}"
+                required="true" requiredMessage="Select at least one user Role">
+                <f:selectItem itemLabel="Administrators" itemValue="Administrators"></f:selectItem>
+                <f:selectItem itemLabel="Guests" itemValue="Guests"></f:selectItem>
+                <f:selectItem itemLabel="Managers" itemValue="Managers"></f:selectItem>
+            </h:selectManyListbox>
+ 
+            <h:outputText value="Street Name :"></h:outputText>
+            <h:inputText id="street" value="#{regBean.street}" required="true"
+                requiredMessage="Please Enter Street Name!"></h:inputText>
+ 
+            <h:outputText value="Suburb :"></h:outputText>
+            <h:inputText id="suburb" value="#{regBean.suburb}" required="true"
+                requiredMessage="Please Enter Suburb!"></h:inputText>
+ 
+            <h:outputText value="City :"></h:outputText>
+            <h:inputText id="city" value="#{regBean.city}" required="true"
+                requiredMessage="Please Enter City!"></h:inputText>
+ 
+            <h:outputText value="Zip :"></h:outputText>
+            <h:inputText id="zip" value="#{regBean.zip}" required="true"
+                requiredMessage="Please Enter Zip Code!"></h:inputText>
+ 
+            <h:outputText value="State/Province :"></h:outputText>
+            <h:inputText id="province" value="#{regBean.province}"
+                required="true" requiredMessage="Please Enter State/Province!"></h:inputText>
+ 
+            <h:outputText value="Country :"></h:outputText>
+            <h:inputText id="country" value="#{regBean.country}" required="true"
+                requiredMessage="Please Select Country!"></h:inputText>
+ 
+            <h:commandButton type="submit" value="Submit"
+                action="#{regBean.addUser}"></h:commandButton>
+            <h:commandButton type="reset" value="Reset"></h:commandButton>
+        </h:panelGrid>
+           
+</h:form>
+                </ui:define>
+        </ui:composition>
+        
+    </body>
+</html>

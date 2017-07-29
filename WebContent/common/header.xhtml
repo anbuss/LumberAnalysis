@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../default.xhtml">
+
+            <ui:define name="top">
+                <div class="outer-div">
+                    <div class="whole-div">
+                        <div class="whole-div">
+                            <div class="header-left">
+                                <div class="logo">
+                                    <img src="images/logo.jpg" height="36" width="166" border="0" />
+                                </div>
+                            </div>
+                            <div class="curve">
+                                <img src="images/curve.jpg" height="38" width="27" border="0" />
+                            </div>
+                            <div class="middle-div">
+                                <div class="search">
+                                    <form>
+                                        <input type="text" style="border:0px; width:190px; padding-left:18px; height:19px; background:url(images/search.jpg) no-repeat;" value="Search" onfocus="if(this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value=this.defaultValue;" />
+                                    </form>
+                                </div>
+                                <div class="top-menu">
+                                    <a href="#" class="blue">Home      </a> &nbsp;| &nbsp;<a href="#" class="blue">Contact  </a> &nbsp;| &nbsp;<a href="#" class="blue">Support  </a>
+                                </div>
+                            </div>
+                            <div class="curve-rght">
+                                <img src="images/curve-right.jpg" height="38" width="50" border="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+
+            <!--  <ui:define name="top">
+                  top
+              </ui:define>
+
+              <ui:define name="left">
+                  left
+              </ui:define>
+
+              <ui:define name="right">
+                  right
+              </ui:define>
+
+              <ui:define name="content">
+                  content
+              </ui:define>
+
+              <ui:define name="bottom">
+                  bottom
+              </ui:define>-->
+
+        </ui:composition>
+
+    </body>
+</html>

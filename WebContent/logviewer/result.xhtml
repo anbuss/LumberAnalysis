@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    
+
+    
+    <h:panelGrid id="memberTable11">
+        <div class=" overflow-x: scroll;" >
+        <img id="ajaxloader" src="../images/spinner.gif" style="position: obsulete;display: none;"/>
+        <h:dataTable id="memberTable" value="#{logViewerBean.resultList}" var="logRowForView" 
+                     styleClass="log-table"  headerClass="log-table-header"
+                     rowClasses="log-table-odd-row, log-table-even-row" 
+                     columnClasses="log-table-col,log-table-col2,log-table-message-col"
+                    >
+ <f:facet  name="header">
+  <h:outputText style="width:10%;font-size:15px;font-weight: bold;" value="Log's result" />
+  
+</f:facet> 
+            <div class=" overflow-x: scroll;" >
+               
+                <h:column >
+                    <f:facet name="header">                            
+                        <h:outputText style="width:10%;font-size:15px;font-weight: bold;" value="#{logViewerBean.resultCaption1}"/>
+                        
+                    </f:facet>
+                    #{logRowForView.result1}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputText style="font-size:15px;font-weight: bold;" value="#{logViewerBean.resultCaption2}"/></f:facet>
+                    #{logRowForView.result2}
+                </h:column>
+                <h:column class="nowrap">
+                    <f:facet name="header"><h:outputText style="font-size:15px;font-weight: bold;" value="#{logViewerBean.resultCaption3}"/></f:facet>
+                    #{logRowForView.result3}
+                </h:column>
+                           
+            </div>     
+        </h:dataTable>
+        </div>   
+    </h:panelGrid>
+</ui:composition>

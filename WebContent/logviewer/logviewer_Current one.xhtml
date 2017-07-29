@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <body >
+
+        <ui:composition template="/template/user.xhtml">
+            <ui:define name="content">
+
+                <script src="../scripts/jquery-1.7.2.js" type="text/javascript"></script>
+                <script src="../scripts/ui/jquery-ui-1.8.20.custom.js" type="text/javascript"></script>
+                <script src="../scripts/ui/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+                <script src="../scripts/jquery.cookies.2.2.0.js" type="text/javascript"></script>
+
+                <link href="../scripts/dynatree-1.2.0/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css" id="skinSheet" />
+                <link href="../resources/css/logviewer.css" rel="stylesheet" type="text/css" id="localSheet" />
+                <script src="../scripts/dynatree-1.2.0/jquery.dynatree.js" type="text/javascript"></script>
+
+                <script src="../scripts/Highcharts-2.2.5/highcharts.js" type="text/javascript"></script>
+                <script src="../scripts/Highcharts-2.2.5/modules/exporting.js" type="text/javascript"></script>
+
+
+                <script>
+
+                    $(window).load(function() {
+                        jsf.ajax.addOnEvent(function (data) {
+                            if (data.status === "success") {
+                                $("#tabs").tabs();
+                            }
+                        });
+                    });
+
+                    $(function () {
+                        $( "#tabview\\:datepicker" ).datetimepicker();
+                        $( "#tabview\\:datepickerEnd" ).datetimepicker();
+                        $( "#tabs" ).tabs();
+                        $("#tabs").tabs();
+                        var chart;
+                        debugger;
+                        var cate = $("#tabview\\:catt").val();
+                        alert(cate);
+                         cate = jQuery.parseJSON(cate);
+                        //cate = ['DX2.Prod.M4', 'DX2.Prod.M1'];
+                        alert(cate);
+                        debugger;
+                        var vall = [{
+                                name: 'John1',
+                                data: [5, 3, 4, 7, 2]
+                            }, {
+                                name: 'Jane',
+                                data: [2, 2, 3, 2, 1]
+                            }, {
+                                name: 'Joe',
+                                data: [3, 4, 4, 2, 5]
+                            }]
+                        vall = $("#tabview\\:dataValue1").val();
+                        alert(vall);
+                        vall =  jQuery.parseJSON(vall);
+
+                        alert(vall);
+                        //vall = [{name:' ',data:[744,19299]},{name:"ERROR",data:[18,433]},{"name":"FATAL","data":[10,105]},{"name":"INFO","data":[9457,270]},{"name":"WARN","data":[39,0]}];
+                        alert(vall);
+                        debugger;
+                        $(document).ready(function() {
+        
+                            chart = new Highcharts.Chart({
+                                chart: {
+                                    renderTo: 'container',
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: 'Stacked column chart'
+                                },
+                                xAxis: {
+                                    categories: cate
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Total fruit consumption'
+                                    },
+                                    stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: (Highcharts.theme) || 'gray'
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    align: 'right',
+                                    x: -100,
+                                    verticalAlign: 'top',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor: (Highcharts.theme) || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    formatter: function() {
+                                        return '<b>'+ this.x +'</b><br/>'+
+                                            this.series.name +': '+ this.y +'<br/>'+
+                                            'Total: '+ this.point.stackTotal;
+                                    }
+                                },
+                                plotOptions: {
+                                    column: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true,
+                                            color: (Highcharts.theme) || 'white'
+                                        }
+                                    }
+                                },
+                                credits:{
+                                    enabled :false
+                                },
+                                series: vall
+                            });
+                        });
+    
+                    });
+                </script>
+                <h:form id="logviewer" prependId="false">
+                    <h:messages showDetail="#{true}" showSummary="#{false}" />
+                    <h:panelGrid columns="2" frame="vsides" id="logviewerlayout" columnClasses="logviewer_left_content, logviewer_right_content">
+                        <p:tree value="#{logViewerBean.root}" var="node" id="checkboxTree"   
+                                selectionMode="checkbox"  style="height:400px; width:235px;overflow:auto;"
+                                selection="#{logViewerBean.selectedNodes}" dynamic="true"  >  
+
+                            <p:ajax event="select"  update="@this"  listener="#{logViewerBean.onNodeSelect}" />
+
+                            <p:ajax event="unselect"  update="@this" listener="#{logViewerBean.onNodeUnselect}" />
+                            <p:treeNode>  
+                                <h:outputText value="#{node.text}" />  
+                            </p:treeNode>  
+                        </p:tree>                       
+
+
+                        <p:tabView id="tabview"   style="margin: 0 auto;width:750px;overflow:auto;">
+                            <p:tab id="searchCritriea" title="Search" >
+                                <h:panelGrid columns="1" style="width:635px;overflow:auto;">
+                                    <ui:include src="search.xhtml"></ui:include>
+                                    <h:panelGrid columns="1">  <h:outputText class="outputText" value=" "></h:outputText></h:panelGrid> 
+                                    <div id="spinner" class="spinner" style="display:none;">
+                                        <img id="img-spinner" src="../images/spinner.gif" alt="Loading"/>
+
+                                        <ui:include src="result.xhtml" ></ui:include>
+
+                                    </div>
+                                </h:panelGrid>
+                            </p:tab>
+                            <p:tab title="Chart's" id ="drawChart" >
+                                <h:inputHidden id="catt" value="#{logViewerBean.chartCategory}" ></h:inputHidden>
+                                <h:inputHidden id="dataValue1" value="#{logViewerBean.chartData}" ></h:inputHidden>
+                                <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                            </p:tab>
+                        </p:tabView>
+
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+    <h:panelGrid columns="2" style="border-style:dotted;border-width:1px;border-color:green;width:700px;overflow:auto;" >
+            <f:facet class="panelGridHeader" name="header" > 
+                <div class="panelGridHeader" style="border-width:3px;border-bottom:solid;border-top: solid;border-color: #00A400" >
+                    
+                    <h:panelGrid   columns="2" columnClasses="panelGridHeader,panelGridHeaderRight" style="width:700px;overflow:auto;">
+                        <h:outputText class="panelGridHeader" value="Search Criteria "/>
+                        <h:panelGroup>
+                        <h:outputText class="panelGridHeaderRight" style="vertical-align:12%" value="Live "/> 
+                        <h:selectBooleanCheckbox id="livecheckbox" value="#{logViewerBean.liveCheck}" 
+ title="select or deselect - for live Search" />
+                        <h:outputText class="panelGridHeaderRight" style="color: #FFFFFF;vertical-align:12%" value=" | "/>                        
+                        <h:commandButton type="reset" value="Reset" class="button_16x16" style="align:right"
+                                      title="Reset search critria."   image="../images/refresh_48.png" ></h:commandButton>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    
+                </div>
+                
+            </f:facet>
+            <h:panelGrid columns="2"  >
+
+                <h:outputText rendered="#{logViewerBean.type}" class="outputText" value="Type :"></h:outputText>
+                <h:selectManyListbox rendered="#{logViewerBean.type}" id="type" value="#{logViewerBean.categorytype}" class="selectManyListbox">
+                    <f:selectItems value="#{logViewerBean.favFood2Value}" />
+                </h:selectManyListbox>
+
+                <h:outputText class="outputText" value="Class Name :"></h:outputText>
+                <h:inputText id="className" value="#{logViewerBean.className}" class="textbox"></h:inputText>
+
+                <h:outputText class="outputText" value="Thread Name :"></h:outputText>
+                <h:inputText id="threadName" value="#{logViewerBean.threadName}" class="textbox" ></h:inputText>
+
+                <h:outputText class="outputText" value="Nested Diagnostic Context :"></h:outputText>
+                <h:inputText id="nestedDiagnosticContext" value="#{logViewerBean.nestedDiagnosticContext}" class="textbox"></h:inputText>
+
+            </h:panelGrid>
+            <h:panelGrid columns="2"  >
+                <h:outputText class="outputText" value="Start :"></h:outputText>                                 
+                <h:inputText id="datepicker" valueChangeListener="#{logViewerBean.startDate}" value="#{logViewerBean.logstartdate}" class="textbox" ></h:inputText>
+
+                <h:outputText class="outputText" value="End :"></h:outputText>
+
+                <h:inputText id="datepickerEnd"  value="#{logViewerBean.logtilldate}" class="textbox" ></h:inputText>
+
+                <h:outputText id="freeText" class="outputText" value="Message :"></h:outputText>
+                <h:inputText  value="#{logViewerBean.freeText}" class="textbox"></h:inputText>
+            </h:panelGrid>
+        
+         <h:outputText class="outputText" value=" "></h:outputText>
+        <h:panelGrid columns="2"  class="panelGridRight">        
+            <h:commandButton rendered="false" type="submit" value="Download" class="button_rounded"
+                                 actionListener="#{logViewerBean.htmlDownload}" >
+                    <f:ajax execute="@form" render="memberTable"  />
+                </h:commandButton>
+            <h:outputText class="outputText" value=" "></h:outputText>
+        <h:panelGroup>
+                <h:commandButton type="submit" value="Filter"  class="button_rounded"
+                    onclick="$('#ajaxloader').show()"  actionListener="#{logViewerBean.displaySelectedMultiple}" >                    
+                    <f:ajax execute="@form" render="memberTable11" onevent="showProgress"/> 
+                </h:commandButton>
+            &nbsp;
+            <h:commandButton rendered="false" type="submit" value="Download" class="button_rounded"
+                                 actionListener="#{logViewerBean.htmlDownload}" >
+                    <f:ajax execute="@form" render="memberTable"  />
+                </h:commandButton>
+            </h:panelGroup>
+    </h:panelGrid>
+        </h:panelGrid>
+    
+</ui:composition>
